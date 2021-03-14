@@ -11,6 +11,23 @@ namespace Yarp.ReverseProxy.Service.Proxy
     /// </summary>
     public sealed record RequestProxyOptions
     {
+        public RequestProxyOptions() { }
+
+        public RequestProxyOptions(TimeSpan? timeout, Version version)
+        {
+            Timeout = timeout;
+            Version = version;
+        }
+
+#if NET
+        public RequestProxyOptions(TimeSpan? timeout, Version version, HttpVersionPolicy? versionPolicy)
+        {
+            Timeout = timeout;
+            Version = version;
+            VersionPolicy = versionPolicy;
+        }
+#endif
+
         /// <summary>
         /// The time allowed to send the request and receive the response headers. This may include
         /// the time needed to send the request body. The default is 100 seconds.

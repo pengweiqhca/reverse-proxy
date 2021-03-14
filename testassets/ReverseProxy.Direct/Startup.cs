@@ -41,7 +41,7 @@ namespace Yarp.ReverseProxy.Sample
             });
 
             var transformer = new CustomTransformer(); // or HttpTransformer.Default;
-            var requestOptions = new RequestProxyOptions { Timeout = TimeSpan.FromSeconds(100) };
+            var requestOptions = new RequestProxyOptions(timeout: TimeSpan.FromSeconds(100), new Version(2, 0));
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>
